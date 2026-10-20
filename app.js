@@ -870,15 +870,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const formData = new FormData(contactForm);
+    const bodyParams = new URLSearchParams(formData).toString();
 
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(formData).toString(),
+      body: bodyParams,
     })
       .then((response) => {
         if (!response.ok) {
-          throw new Error("Erreur de soumission réseau");
+          throw new Error(`Statut HTTP : ${response.status}`);
         }
         contactForm.reset();
         showFormToast(
