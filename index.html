@@ -588,7 +588,6 @@
         </div>
 
         <!-- AVATAR VISITEUR / SANS PROFIL (INVISIBLE DANS LA GRILLE MAIS UTILISÉ PAR LE SCRIPT) -->
-        <!-- AVATAR VISITEUR / SANS PROFIL (INVISIBLE DANS LA GRILLE MAIS UTILISÉ PAR LE SCRIPT) -->
         <div
           class="profile-box hidden-visitor-avatar"
           onclick="selectProfile('visiteur', event)"
@@ -646,13 +645,6 @@
     </div>
 
     <!-- ÉCRAN DE CHARGEMENT TRANSITOIRE (STYLE NETFLIX) -->
-    <!-- <div id="nf-loader-gate" class="nf-loader-gate">
-      <div class="loader-content">
-        <div class="loader-avatar-box" id="loader-avatar-target"></div>
-        <div class="nf-spinner-ring"></div>
-      </div>
-    </div> -->
-
     <div id="nf-loader-gate" class="nf-loader-gate">
       <div class="loader-content">
         <div class="loader-avatar-box" id="loader-avatar-target"></div>
@@ -723,23 +715,28 @@
           </li>
           <li>
             <a
-              href="javascript:void(0)"
+              href="#about"
               class="nav-link"
               data-target="about"
-              onclick="openModalDetails('about')"
+              onclick="
+                event.preventDefault();
+                openModalDetails('about');
+              "
               >À Propos</a
             >
           </li>
           <li>
             <a
-              href="javascript:void(0)"
+              href="#faq"
               class="nav-link"
               data-target="faq"
-              onclick="openModalDetails('faq')"
+              onclick="
+                event.preventDefault();
+                openModalDetails('faq');
+              "
               >FAQ</a
             >
           </li>
-          <!-- Dans ta balise <ul class="nf-menu-links desktop-nav" id="menu-links"> -->
           <li>
             <a
               href="#contact-section"
@@ -783,7 +780,6 @@
         </div>
       </div>
 
-      <!-- RIDEAU DÉROULANT : GRILLE DE TUILES STYLE STREAMING -->
       <!-- RIDEAU DÉROULANT MOBILE -->
       <div class="mobile-nav-drawer" id="mobile-nav-drawer">
         <div class="mobile-drawer-inner">
@@ -861,9 +857,12 @@
 
             <!-- 5. FAQ (Pleine largeur) -->
             <a
-              href="javascript:void(0)"
+              href="#faq"
               class="nav-tile tile-full-width"
-              onclick="handleMobileNavClick('faq', event)"
+              onclick="
+                event.preventDefault();
+                handleMobileNavClick('faq', event);
+              "
             >
               <div class="tile-icon-box teal">
                 <i class="fa-solid fa-circle-question"></i>
@@ -876,9 +875,12 @@
 
             <!-- 6. À Propos (Pleine largeur - dernière tuile de la grille) -->
             <a
-              href="javascript:void(0)"
+              href="#about"
               class="nav-tile tile-full-width"
-              onclick="handleMobileNavClick('about', event)"
+              onclick="
+                event.preventDefault();
+                handleMobileNavClick('about', event);
+              "
             >
               <div class="tile-icon-box cyan">
                 <i class="fa-solid fa-user-tie"></i>
@@ -891,11 +893,9 @@
           </div>
 
           <!-- BOUTON D'ACTION FINAL EN BAS -->
-          <!-- ACTION FINALE MOBILE : AVATAR À CÔTÉ DU BOUTON -->
           <div class="mobile-drawer-bottom-actions">
             <div class="drawer-action-row">
               <div id="drawer-user-avatar" class="drawer-user-avatar-wrap">
-                <!-- Avatar par défaut de secours -->
                 <img src="images/guillaume-portrait.webp" alt="Avatar actif" />
               </div>
               <a
@@ -1021,9 +1021,10 @@
               <div class="project-desc-source" style="display: none">
                 <p>
                   <strong
-                    >Conception et digitalisation de la boutique en ligne
-                  </strong>
-                  de Tourn'bois Créations, tournerie réputé dans le travail du
+                    >Conception et digitalisation de la boutique en
+                    ligne</strong
+                  >
+                  de Tourn'bois Créations, tournerie réputée dans le travail du
                   bois noble.
                 </p>
                 <p>
@@ -1262,7 +1263,6 @@
                     faciliter la navigation des particuliers comme des
                     professionnels.
                   </li>
-
                   <li>
                     <strong>Captation vidéo par drone 4K :</strong> J'ai réalisé
                     les prises de vues aériennes de la plateforme de tri pour
@@ -1326,7 +1326,7 @@
                   <li>
                     <strong>Référencement local dans le Doubs :</strong> J'ai
                     optimisé le site pour les recherches de chaussures dans le
-                    départemetn du Doubs et les communes voisines (Suisse
+                    département du Doubs et les communes voisines (Suisse
                     voisine).
                   </li>
                 </ul>
@@ -1413,7 +1413,7 @@
               <div class="project-desc-source" style="display: none">
                 <p>
                   <strong>Développement du site vitrine</strong>
-                  de Formprotech, organisme de formation dnas l'Ain.
+                  de Formprotech, organisme de formation dans l'Ain.
                 </p>
                 <p>
                   Le site présente l'ensemble de l'offre certifiée et oriente
@@ -2246,7 +2246,6 @@
       </section>
 
       <!-- PÔLE 2 : COMPLÉMENT DRONE 4K -->
-      <!-- PÔLE 2 : COMPLÉMENT DRONE 4K (3 BLOCS ÉQUILIBRÉS) -->
       <section class="nf-row" id="row-drone">
         <h2 class="row-title">
           Pôle Drone : Prises de Vues Aériennes 4K pour vos Projets Web
@@ -3905,6 +3904,26 @@
             >
               Sélectionnez une réalisation ci-dessous pour lancer la vidéo.
             </p>
+            <!-- Bouton unique dynamique vers YouTube -->
+            <div style="margin-top: 14px">
+              <a
+                id="drone-yt-btn"
+                href="https://www.youtube.com/watch?v=BFW8NQMlFGE"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="yt-hero-action-btn"
+              >
+                <i
+                  class="fa-brands fa-youtube"
+                  style="color: #ff0000; font-size: 1.1rem"
+                ></i>
+                <span>Regarder sur YouTube</span>
+                <i
+                  class="fa-solid fa-arrow-up-right-from-square"
+                  style="font-size: 0.75rem; opacity: 0.8"
+                ></i>
+              </a>
+            </div>
           </div>
         </div>
 
@@ -3928,7 +3947,7 @@
                 class="episode-item drone-item-row active"
                 data-video="BFW8NQMlFGE"
                 data-title="Pralognan vu du ciel !"
-                data-desc="J'ai capté les crêtes et panoramas alpins de Pralognan lors d'un vol cinématographique haute altitude."
+                data-desc="Crêtes et panoramas alpins de Pralognan"
                 onclick="playDroneEpisodeFromDOM(this)"
               >
                 <div class="episode-top-row">
@@ -3964,7 +3983,7 @@
                 class="episode-item drone-item-row"
                 data-video="AG2FlnBh7F8"
                 data-title="Le Grau-du-Roi vu d'en haut"
-                data-desc="J'ai filmé les salins roses et le littoral méditerranéen pour révéler les contrastes entre terre et mer."
+                data-desc="Salins roses et littoral de la Camargue."
                 onclick="playDroneEpisodeFromDOM(this)"
               >
                 <div class="episode-top-row">
@@ -4000,7 +4019,7 @@
                 class="episode-item drone-item-row"
                 data-video="JcSNV1_nF8A"
                 data-title="TGV par Drone (DJI Air 3)"
-                data-desc="J'ai suivi dynamiquement une rame TGV à travers les plaines de l'Ain avec un cadrage rapide et stabilisé."
+                data-desc="Suivi de TGV sur un pont ferroviaire."
                 onclick="playDroneEpisodeFromDOM(this)"
               >
                 <div class="episode-top-row">
@@ -4027,7 +4046,7 @@
                   class="episode-synopsis"
                   style="max-height: 120px; opacity: 1; margin-top: 10px"
                 >
-                  <p>Suivi de TGV sur un pont feroviaire.</p>
+                  <p>Suivi de TGV sur un pont ferroviaire.</p>
                 </div>
               </article>
 
@@ -4036,7 +4055,7 @@
                 class="episode-item drone-item-row"
                 data-video="MdyKEyuJadA"
                 data-title="Barrage de Vouglans (DJI Air 3)"
-                data-desc="J'ai survolé l'ouvrage monumental du barrage de Vouglans et les eaux turquoise de la retenue jurassienne."
+                data-desc="Barrage de Vouglans et gorges de l'Ain."
                 onclick="playDroneEpisodeFromDOM(this)"
               >
                 <div class="episode-top-row">
@@ -4072,7 +4091,7 @@
                 class="episode-item drone-item-row"
                 data-video="3BXO3Ef2v3c"
                 data-title="L'Ain vu du ciel en 4K"
-                data-desc="J'ai mis en valeur la diversité des paysages, rivières et massifs de notre département de l'Ain."
+                data-desc="Diversité des paysages du département de l'Ain."
                 onclick="playDroneEpisodeFromDOM(this)"
               >
                 <div class="episode-top-row">
@@ -4108,7 +4127,7 @@
                 class="episode-item drone-item-row"
                 data-video="214emgEmwMM"
                 data-title="Les Meubles Mailland — L'Atelier"
-                data-desc="J'ai filmé les gestes d'ébénisterie au plus près des machines pour valoriser l'artisanat français."
+                data-desc="Valorisation de l'atelier des Meubles Mailland"
                 onclick="playDroneEpisodeFromDOM(this)"
               >
                 <div class="episode-top-row">
@@ -4137,7 +4156,7 @@
                   class="episode-synopsis"
                   style="max-height: 120px; opacity: 1; margin-top: 10px"
                 >
-                  <p>Valorisation de l'atelier des Meubles Mailland</p>
+                  <p>Valorisation de l'atelier des Meubles Mailland.</p>
                 </div>
               </article>
 
@@ -4146,7 +4165,7 @@
                 class="episode-item drone-item-row"
                 data-video="3juRmdvfCv0"
                 data-title="Les Meubles Mailland"
-                data-desc="J'ai réalisé les prises de vues extérieures du showroom pour moderniser la communication du fabricant."
+                data-desc="Prises de vues extérieures et intérieur du showroom des Meubles Mailland."
                 onclick="playDroneEpisodeFromDOM(this)"
               >
                 <div class="episode-top-row">
@@ -4177,7 +4196,7 @@
                 >
                   <p>
                     Prises de vues extérieures et intérieur du showroom des
-                    Meubles Mailland
+                    Meubles Mailland.
                   </p>
                 </div>
               </article>
@@ -4187,7 +4206,7 @@
                 class="episode-item drone-item-row"
                 data-video="JdhYUkXgiE0"
                 data-title="Les Serres de la Beviere"
-                data-desc="J'ai documenté les installations horticoles de l'exploitation pour illustrer son envergure territoriale."
+                data-desc="Prises de vues extérieures et intérieures des serres de la Bévière."
                 onclick="playDroneEpisodeFromDOM(this)"
               >
                 <div class="episode-top-row">
@@ -4399,36 +4418,51 @@
             <ul>
               <li>
                 <a
-                  href="javascript:void(0)"
-                  onclick="openServiceModalFromDOM('creation')"
+                  href="#creation"
+                  onclick="
+                    event.preventDefault();
+                    openServiceModalFromDOM('creation');
+                  "
                   >Création sur-mesure</a
                 >
               </li>
               <li>
                 <a
-                  href="javascript:void(0)"
-                  onclick="openServiceModalFromDOM('maintenance')"
+                  href="#maintenance"
+                  onclick="
+                    event.preventDefault();
+                    openServiceModalFromDOM('maintenance');
+                  "
                   >Maintenance &amp; Sécurité</a
                 >
               </li>
               <li>
                 <a
-                  href="javascript:void(0)"
-                  onclick="openServiceModalFromDOM('seo')"
+                  href="#seo"
+                  onclick="
+                    event.preventDefault();
+                    openServiceModalFromDOM('seo');
+                  "
                   >Référencement SEO Ain</a
                 >
               </li>
               <li>
                 <a
-                  href="javascript:void(0)"
-                  onclick="openServiceModalFromDOM('pedagogie')"
+                  href="#pedagogie"
+                  onclick="
+                    event.preventDefault();
+                    openServiceModalFromDOM('pedagogie');
+                  "
                   >Formation &amp; Pédagogie</a
                 >
               </li>
               <li>
                 <a
-                  href="javascript:void(0)"
-                  onclick="openModalDetails('drone-service')"
+                  href="#drone"
+                  onclick="
+                    event.preventDefault();
+                    openModalDetails('drone-service');
+                  "
                   >Prises de vues drone</a
                 >
               </li>
@@ -4440,17 +4474,32 @@
             <h4>Ressources</h4>
             <ul>
               <li>
-                <a href="javascript:void(0)" onclick="openModalDetails('about')"
+                <a
+                  href="#about"
+                  onclick="
+                    event.preventDefault();
+                    openModalDetails('about');
+                  "
                   >À Propos de Guillaume</a
                 >
               </li>
               <li>
-                <a href="javascript:void(0)" onclick="openModalDetails('faq')"
+                <a
+                  href="#faq"
+                  onclick="
+                    event.preventDefault();
+                    openModalDetails('faq');
+                  "
                   >Foire Aux Questions (FAQ)</a
                 >
               </li>
               <li>
-                <a href="javascript:void(0)" onclick="switchProfileGate()"
+                <a
+                  href="#profils"
+                  onclick="
+                    event.preventDefault();
+                    switchProfileGate();
+                  "
                   >Changer de profil</a
                 >
               </li>
@@ -4538,11 +4587,21 @@
         <div class="footer-bottom-bar">
           <p>© 2026 Aindev — Tous droits réservés.</p>
           <div class="footer-bottom-links">
-            <a href="javascript:void(0)" onclick="openModalDetails('legal')"
+            <a
+              href="#legal"
+              onclick="
+                event.preventDefault();
+                openModalDetails('legal');
+              "
               >Mentions Légales &amp; RGPD</a
             >
             <span>·</span>
-            <a href="javascript:void(0)" onclick="openModalDetails('about')"
+            <a
+              href="#about"
+              onclick="
+                event.preventDefault();
+                openModalDetails('about');
+              "
               >Crédits</a
             >
           </div>

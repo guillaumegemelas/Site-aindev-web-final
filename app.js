@@ -481,6 +481,12 @@ function playDroneEpisodeFromDOM(element) {
   dronePlayerTitle.innerText = title;
   dronePlayerDesc.innerText = desc;
 
+  // Mise à jour automatique du lien YouTube vers la vidéo active :
+  const ytBtn = document.getElementById("drone-yt-btn");
+  if (ytBtn && videoId) {
+    ytBtn.href = `https://www.youtube.com/watch?v=${videoId}`;
+  }
+
   document.querySelectorAll(".drone-item-row").forEach((el) => {
     el.classList.toggle("active", el === element);
   });
