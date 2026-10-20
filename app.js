@@ -822,3 +822,84 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+// ========================================================
+// GESTIONNAIRE D'ENVOI NETLIFY & TOAST DE CONFIRMATION
+// ========================================================
+function showFormToast(isSuccess, title, message) {
+  const toast = document.getElementById("form-toast");
+  const toastTitle = document.getElementById("toast-title");
+  const toastMsg = document.getElementById("toast-message");
+  const toastIcon = document.getElementById("toast-icon");
+  if (!toast) return;
+
+  if (isSuccess) {
+    toast.classList.remove("error");
+    if (toastIcon)
+      toastIcon.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+  } else {
+    toast.classList.add("error");
+    if (toastIcon)
+      toastIcon.innerHTML = '<i class="fa-solid fa-circle-xmark"></i>';
+  }
+
+  if (toastTitle) toastTitle.textContent = title;
+  if (toastMsg) toastMsg.textContent = message;
+
+  toast.classList.add("show");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 5000);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const contactForm = document.querySelector('form[name="contact-aindev"]');
+  if (!contactForm) return;
+
+  contactForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    const originalBtnHTML = submitBtn ? submitBtn.innerHTML : "";
+
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML =
+        '<i class="fa-solid fa-spinner fa-spin"></i> Envoi en cours...';
+    }
+
+    const formData = new FormData(contactForm);
+
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(formData).toString(),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Erreur de soumission réseau");
+        }
+        contactForm.reset();
+        showFormToast(
+          true,
+          "Message bien reçu !",
+          "Merci pour votre confiance, je vous recontacte sous 24h.",
+        );
+      })
+      .catch((err) => {
+        console.error("Échec envoi Netlify :", err);
+        showFormToast(
+          false,
+          "Une erreur est survenue",
+          "Merci de vérifier votre connexion ou de me joindre au 06 36 42 18 59.",
+        );
+      })
+      .finally(() => {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnHTML;
+        }
+      });
+  });
+});
