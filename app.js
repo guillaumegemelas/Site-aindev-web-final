@@ -885,7 +885,7 @@ document.addEventListener("DOMContentLoaded", () => {
         showFormToast(
           true,
           "Message bien reçu !",
-          "Merci pour votre confiance, je vous recontacte sous 24h.",
+          "Merci pour votre message, je vous recontacterai rapidement.",
         );
       })
       .catch((err) => {
