@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aindev-web.fr/sitemap.xml
