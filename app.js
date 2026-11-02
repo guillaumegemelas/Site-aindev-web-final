@@ -394,7 +394,7 @@ function openModalDetails(type) {
       
       <div class="modal-episodes-action-wrap">
         <button type="button" class="btn-episodes-glass" onclick="switchModalToDroneEpisodes()">
-          <i class="fa-solid fa-play"></i> Voir tous les épisodes vidéo (8 réalisations 4K)
+          <i class="fa-solid fa-play"></i> Voir tous les épisodes vidéo 4k
         </button>
       </div>
     `;
@@ -789,7 +789,7 @@ function smoothScrollToTarget(targetId, e) {
   } else {
     const el = document.getElementById(targetId);
     if (el) {
-      const headerOffset = 65;
+      const headerOffset = 105;
       const pos =
         el.getBoundingClientRect().top + window.pageYOffset - headerOffset;
       window.scrollTo({
