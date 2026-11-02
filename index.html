@@ -963,21 +963,43 @@
         </p>
 
         <div class="billboard-actions">
-          <button
-            type="button"
-            class="btn-nf btn-nf-play"
-            onclick="scrollToContact(event)"
-          >
-            <i class="fa-solid fa-comments"></i> Discuter de votre projet
-          </button>
+          <div class="hero-left-stack">
+            <button
+              type="button"
+              class="btn-nf btn-nf-play btn-hero-left"
+              onclick="scrollToContact(event)"
+            >
+              <span class="hero-live-status"></span>
+              <span>Discuter de votre projet</span>
+              <i
+                class="fa-solid fa-arrow-right"
+                style="font-size: 0.78rem; opacity: 0.55; margin-left: auto"
+              ></i>
+            </button>
 
-          <button
-            type="button"
-            class="btn-nf btn-nf-info"
-            onclick="openModalDetails('about')"
+            <button
+              type="button"
+              class="btn-nf btn-nf-info btn-hero-left"
+              onclick="openModalDetails('about')"
+            >
+              <img
+                src="images/guillaume-portrait.webp"
+                alt="Guillaume Gemelas"
+                class="btn-avatar-round"
+              />
+              <span>Qui suis-je ?</span>
+            </button>
+          </div>
+
+          <!-- Bouton d'appel direct visible UNIQUEMENT sur mobile -->
+          <a
+            href="tel:0636421859"
+            class="hero-call-tile"
+            aria-label="Appeler Guillaume directement au 06 36 42 18 59"
           >
-            <i class="fa-solid fa-user"></i>Qui suis-je ?
-          </button>
+            <i class="fa-solid fa-phone"></i>
+            <span>Appel direct</span>
+          </a>
         </div>
       </div>
     </section>

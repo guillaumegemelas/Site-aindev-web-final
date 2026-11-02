@@ -23,6 +23,7 @@ html {
   padding: 0;
   -webkit-font-smoothing: antialiased;
 }
+
 /* Supprime le flash bleu de sélection tactile sur iOS et Android */
 * {
   -webkit-tap-highlight-color: transparent;
@@ -246,18 +247,11 @@ body {
   border: 1px solid rgba(0, 91, 154, 0.3);
   backdrop-filter: blur(10px);
 }
-/* ========================================================
-   MISE EN VALEUR PREMIUM DU BOUTON CONTACT (DESKTOP)
-   ======================================================== */
-/* ========================================================
-   MISE EN VALEUR CONTACT (ALIGNÉE AU PIXEL PRÈS)
-   ======================================================== */
+
+/* Mise en valeur du bouton contact desktop */
 .nf-menu-links a.nav-link.nav-contact-btn {
-  /* Mêmes dimensions strictes que les autres liens pour ne pas fausser le calcul */
   padding: 7px 16px;
   border-radius: 20px;
-
-  /* Utilisation de box-shadow inset au lieu d'un border pour éviter le décalage de 1px */
   border: none;
   box-shadow:
     inset 0 0 0 1px rgba(29, 146, 225, 0.5),
@@ -270,7 +264,6 @@ body {
   transition: all 0.25s ease;
 }
 
-/* Au survol */
 .nf-menu-links a.nav-link.nav-contact-btn:hover {
   background: rgba(29, 146, 225, 0.2);
   box-shadow:
@@ -279,10 +272,9 @@ body {
   color: #ffffff;
 }
 
-/* Quand la pastille arrive dessus (état actif) */
 .nf-menu-links a.nav-link.nav-contact-btn.active {
-  background: transparent; /* Laisse transparaître la pastille parfaitement calée en dessous */
-  box-shadow: none; /* Retire le cadre pour ne pas doubler avec le contour de la pastille */
+  background: transparent;
+  box-shadow: none;
 }
 
 .nav-pill-indicator {
@@ -449,6 +441,7 @@ body {
   margin-bottom: 15px;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
 }
+
 .meta-logo-img {
   height: 20px;
   width: auto;
@@ -488,42 +481,147 @@ body {
   margin-bottom: 25px;
 }
 
-.billboard-actions {
-  display: flex;
-  gap: 15px;
-}
-
+/* ========================================================
+   BASE COMMUNE DES BOUTONS .btn-nf (HERO & MODALES)
+   ======================================================== */
 .btn-nf {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 11px 26px;
-  font-size: 1.05rem;
+  padding: 11px 24px;
+  font-size: 0.95rem;
   font-weight: 700;
-  border-radius: 4px;
+  border-radius: 50px;
   border: none;
   cursor: pointer;
   text-decoration: none;
-  transition: all 0.2s ease;
+  box-sizing: border-box;
+  transition:
+    transform 0.25s cubic-bezier(0.2, 0, 0, 1),
+    box-shadow 0.25s ease,
+    background-color 0.25s ease,
+    filter 0.2s ease;
 }
 
+/* 1. Bouton Blanc (Play / Visiter le site / Demander un devis) */
+/* 1. Bouton Principal : Finition nacrée & liseré de verre */
 .btn-nf-play {
-  background-color: var(--nf-white);
-  color: #000;
+  background: linear-gradient(180deg, #ffffff 0%, #f1f6fc 100%) !important;
+  color: #0b1320 !important;
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.45),
+    0 0 12px rgba(29, 146, 225, 0.2),
+    /* Aura cyan discrète au repos */ inset 0 1px 0 rgba(255, 255, 255, 1) !important;
+  transition:
+    transform 0.25s cubic-bezier(0.2, 0, 0, 1),
+    box-shadow 0.25s ease,
+    filter 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.9) !important;
 }
 
 .btn-nf-play:hover {
-  background-color: rgba(255, 255, 255, 0.75);
+  background: #ffffff !important;
+  color: #000000 !important;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow:
+    0 0 0 1px var(--aindev-cyan),
+    0 0 18px rgba(29, 146, 225, 0.85),
+    0 0 38px rgba(0, 119, 200, 0.65),
+    0 0 65px rgba(0, 91, 154, 0.45) !important;
+  filter: brightness(1.05);
 }
 
+.btn-nf-play:active {
+  transform: translateY(0) scale(1);
+}
+
+/* 2. Bouton Transparent / Fumé (Info / Qui suis-je ?) */
 .btn-nf-info {
   background-color: rgba(109, 109, 110, 0.7);
-  color: var(--nf-white);
+  color: var(--nf-white) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
 }
 
 .btn-nf-info:hover {
-  background-color: rgba(109, 109, 110, 0.4);
+  background-color: rgba(18, 28, 42, 0.9) !important;
+  color: #ffffff !important;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow:
+    0 0 0 1px var(--aindev-cyan),
+    0 0 16px rgba(29, 146, 225, 0.85),
+    0 0 35px rgba(0, 119, 200, 0.65),
+    0 0 60px rgba(0, 91, 154, 0.45) !important;
+  filter: brightness(1.08);
+}
+
+.btn-nf-info:active {
+  transform: translateY(0) scale(1);
+}
+
+/* ========================================================
+   SPÉCIFICITÉS DES BOUTONS DU HERO (DESKTOP)
+   ======================================================== */
+.billboard-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.hero-left-stack {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Hauteur verrouillée uniquement pour le Hero */
+.billboard-actions .btn-nf {
+  height: 48px !important;
+  padding: 0 24px !important;
+  margin: 0;
+}
+
+/* Pastille cyan pulsante */
+.hero-live-status {
+  width: 9px;
+  height: 9px;
+  background-color: var(--aindev-cyan);
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 10px rgba(29, 146, 225, 0.85);
+  flex-shrink: 0;
+  animation: pulseLiveDotCyan 2s infinite ease-in-out;
+}
+
+@keyframes pulseLiveDotCyan {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+    box-shadow: 0 0 8px rgba(29, 146, 225, 0.7);
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0.75;
+    box-shadow: 0 0 16px rgba(0, 119, 200, 1);
+  }
+}
+
+/* Portrait rond de Guillaume dans le Hero */
+.btn-avatar-round {
+  width: 24px !important;
+  height: 24px !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  border: 1.5px solid var(--aindev-cyan) !important;
+  box-shadow: 0 0 6px rgba(29, 146, 225, 0.4) !important;
+  flex-shrink: 0 !important;
+}
+
+/* Cache la tuile d'appel direct sur grand écran */
+.hero-call-tile {
+  display: none;
 }
 
 /* ========================================================
@@ -546,11 +644,11 @@ body {
 .row-title {
   font-size: 1.45rem;
   font-weight: 700;
-  margin-bottom: 18px;
   letter-spacing: -0.2px;
   display: flex;
-  align-items: baseline; /* Aligne le texte bleu sur la ligne de base du titre */
+  align-items: baseline;
   gap: 12px;
+  margin-bottom: 24px;
 }
 
 .row-title span {
@@ -695,6 +793,7 @@ body {
 .slider-arrow.left {
   left: 0;
 }
+
 .slider-arrow.right {
   right: 0;
 }
@@ -709,7 +808,6 @@ body {
   width: 100%;
 }
 
-/* 1. Première tuile : 25% (1 colonne, ratio 16/9 cinéma) */
 .drone-highlight-card {
   flex: 0 0 calc(25% - 15px);
   width: calc(25% - 15px);
@@ -719,7 +817,6 @@ body {
   border-radius: 8px;
 }
 
-/* 2. Deuxième boîte (Épisodes) : 50% (2 colonnes) */
 .drone-episodes-cta-box {
   flex: 0 0 calc(50% - 10px);
   width: calc(50% - 10px);
@@ -785,7 +882,6 @@ body {
   overflow: hidden;
 }
 
-/* 3. Troisième boîte (Cadre légal) : 25% (1 colonne, calée en hauteur) */
 .drone-info-card {
   flex: 0 0 calc(25% - 15px);
   width: calc(25% - 15px);
@@ -865,41 +961,7 @@ body {
   color: #ffffff;
 }
 
-/* Format mobile */
-@media (max-width: 768px) {
-  /* 1. Correction de la section Pôle Drone sur mobile */
-  .drone-row-container {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    padding: 0 4px; /* Assure les marges latérales sur mobile */
-  }
-
-  /* La première tuile et toutes les boîtes drone adoptent un format propre et proportionné */
-  .drone-highlight-card,
-  .drone-episodes-cta-box,
-  .drone-info-card {
-    flex: 0 0 100% !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    aspect-ratio: 16 / 9 !important; /* Force un ratio cinéma propre, évite qu'elle ne devienne trop haute */
-    height: auto !important;
-  }
-
-  /* Ajustement spécifique de la boîte des épisodes et du cadre légal sur mobile pour garder de l'air */
-  .drone-episodes-cta-box {
-    aspect-ratio: auto !important;
-    min-height: 140px;
-    padding: 18px 20px;
-  }
-
-  .drone-info-card {
-    aspect-ratio: auto !important;
-    padding: 18px 20px;
-  }
-}
-
-/* AVIS CLIENTS */
+/* Avis clients */
 .review-card-item {
   background-color: #0d0d0d;
   border: 1px solid #1a1a1a;
@@ -945,10 +1007,10 @@ body {
   inset: 0;
   background-color: rgba(0, 0, 0, 0.88);
   z-index: 1000;
-  display: block !important; /* Block permet au conteneur de défiler jusqu'en bas */
+  display: block !important;
   padding: 40px 14px 80px;
-  overflow-y: auto !important; /* Active le scroll vertical obligatoire */
-  -webkit-overflow-scrolling: touch !important; /* Inertie iOS native */
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
   opacity: 0;
   visibility: hidden;
   transition:
@@ -961,7 +1023,6 @@ body {
   visibility: visible;
 }
 
-/* Le conteneur se positionne au centre sans bloquer le scroll */
 .nf-modal-container {
   background-color: var(--nf-dark);
   width: 100%;
@@ -974,6 +1035,7 @@ body {
   border: 1px solid rgba(0, 91, 154, 0.3);
   transform: none !important;
 }
+
 .modal-close-btn {
   position: absolute;
   top: 18px;
@@ -1012,7 +1074,6 @@ body {
   border-radius: 16px 16px 0 0;
 }
 
-/* PASTILLE LOGO CLIENT */
 .modal-brand-badge {
   position: absolute;
   top: 20px;
@@ -1124,30 +1185,6 @@ body {
   transform: none !important;
 }
 
-/* .modal-hero-gradient {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    linear-gradient(
-      to top,
-      #13151a 0%,
-      #13151a 8%,
-      rgba(19, 21, 26, 0.85) 25%,
-      transparent 65%
-    ),
-    radial-gradient(
-      ellipse at 5% 90%,
-      rgba(19, 21, 26, 0.95) 0%,
-      rgba(19, 21, 26, 0.6) 35%,
-      transparent 60%
-    );
-  z-index: 2;
-} */
-/* 1. ÉTAT PAR DÉFAUT (Sur l'image fixe : dégradé riche et bien contrasté) */
-/* ========================================================
-   VOILE MODALE AVEC DOUBLE COUCHE SANS FLASH LUMINEUX
-   ======================================================== */
 .modal-hero-gradient {
   position: absolute;
   inset: 0;
@@ -1155,8 +1192,6 @@ body {
   z-index: 2;
 }
 
-/* Couche A : Le voile compact permanent (raccord bas + halo titre) 
-   -> Toujours actif, ne bouge jamais */
 .modal-hero-gradient::before {
   content: "";
   position: absolute;
@@ -1178,32 +1213,28 @@ body {
   z-index: 1;
 }
 
-/* Couche B : Le voile haut/large présent UNIQUEMENT sur l'image fixe */
 .modal-hero-gradient::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: 
-    /* 1. Dégradé vertical : s'arrête à 40% de hauteur au lieu de 65% */
+  background:
     linear-gradient(
       to top,
       #13151a 0%,
       rgba(19, 21, 26, 0.75) 18%,
       transparent 40%
     ),
-    /* 2. Halo gauche : resserré sous le texte (45% au lieu de 60%) */
     radial-gradient(
-        ellipse at 5% 92%,
-        rgba(19, 21, 26, 0.85) 0%,
-        rgba(19, 21, 26, 0.45) 25%,
-        transparent 45%
-      );
+      ellipse at 5% 92%,
+      rgba(19, 21, 26, 0.85) 0%,
+      rgba(19, 21, 26, 0.45) 25%,
+      transparent 45%
+    );
   z-index: 2;
   opacity: 1;
   transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Dès que la vidéo démarre : la couche haute s'estompe en fondu parfait */
 .modal-hero-cover.has-video-playing .modal-hero-gradient::after {
   opacity: 0;
 }
@@ -1222,9 +1253,6 @@ body {
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9);
 }
 
-/* ========================================================
-   CORPS DE LA MODALE
-   ======================================================== */
 .modal-body {
   padding: 35px 50px 50px 50px;
 }
@@ -1514,9 +1542,7 @@ body {
   color: #ffffff;
 }
 
-/* ========================================================
-   ENCADRÉ AVIS CLIENT & RÉSEAUX MODALE
-   ======================================================== */
+/* Encadré avis client modale */
 .modal-review-highlight {
   margin-top: 25px;
   padding: 20px 24px;
@@ -1605,14 +1631,12 @@ body {
   overflow: hidden;
 }
 
-/* Couche photo fixe avec fondus d'ombrage calibrés */
 .contact-fixed-bg {
   position: absolute;
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  background-image: 
-    /* 1. Halo sombre protecteur à gauche sous les textes */
+  background-image:
     radial-gradient(
       ellipse 65% 70% at 20% 50%,
       rgba(7, 9, 12, 0.92) 0%,
@@ -1620,15 +1644,14 @@ body {
       rgba(7, 9, 12, 0.2) 80%,
       transparent 100%
     ),
-    /* 2. Fondu haut (noir pur) et fondu bas progressif vers le footer */
     linear-gradient(
-        180deg,
-        #000000 0%,
-        rgba(7, 9, 12, 0.2) 20%,
-        rgba(7, 9, 12, 0.3) 65%,
-        rgba(7, 9, 12, 0.9) 90%,
-        #07090c 100%
-      ),
+      180deg,
+      #000000 0%,
+      rgba(7, 9, 12, 0.2) 20%,
+      rgba(7, 9, 12, 0.3) 65%,
+      rgba(7, 9, 12, 0.9) 90%,
+      #07090c 100%
+    ),
     url("images/ain2.webp");
   background-attachment: fixed;
   background-position: center center;
@@ -1648,7 +1671,6 @@ body {
   align-items: center;
 }
 
-/* Colonne gauche éditoriale */
 .contact-side-info {
   display: flex;
   flex-direction: column;
@@ -1720,7 +1742,6 @@ body {
   line-height: 1.45;
 }
 
-/* Carte contact avec effet verre dépoli */
 .contact-direct-card {
   display: flex;
   align-items: center;
@@ -1774,7 +1795,6 @@ body {
   text-decoration: underline;
 }
 
-/* Colonne droite : Boîte formulaire avec halo cyan diffus */
 .nf-contact-box {
   width: 100%;
   background: rgba(12, 17, 24, 0.82);
@@ -1845,71 +1865,12 @@ body {
   min-height: 100px;
 }
 
-.nf-contact-form button[type="submit"] {
-  width: 100%;
-  padding: 15px;
-  background: linear-gradient(
-    135deg,
-    var(--aindev-blue) 0%,
-    var(--aindev-cyan) 100%
-  );
-  color: #ffffff;
-  font-weight: 800;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 0.98rem;
-  letter-spacing: 0.3px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    filter 0.2s ease;
-}
-
-.nf-contact-form button[type="submit"]:hover {
-  transform: translateY(-2px);
-  filter: brightness(1.1);
-  box-shadow: 0 6px 20px rgba(29, 146, 225, 0.4);
-}
-
 .nf-contact-form .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
 }
 
-.nf-contact-form input,
-.nf-contact-form textarea {
-  width: 100%;
-  padding: 13px 16px;
-  background-color: #0f1722;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  color: #ffffff;
-  font-family: inherit;
-  font-size: 0.92rem;
-  transition:
-    border-color 0.2s ease,
-    background-color 0.2s ease;
-}
-
-.nf-contact-form input:focus,
-.nf-contact-form textarea:focus {
-  outline: none;
-  background-color: #121e2d;
-  border-color: var(--aindev-cyan);
-}
-
-.nf-contact-form textarea {
-  resize: vertical;
-  min-height: 100px;
-}
-
-/* Ligne bouton + avatar synchronisé */
 .form-submit-row {
   display: flex;
   align-items: center;
@@ -1940,7 +1901,7 @@ body {
 }
 
 .btn-submit-action {
-  flex: 1; /* Prend tout l'espace restant */
+  flex: 1;
   height: 52px;
   padding: 0 20px;
   background: linear-gradient(
@@ -1986,7 +1947,7 @@ body {
 
 .footer-full-container {
   width: 100%;
-  max-width: 1240px; /* Aligné sur la même largeur que le bloc contact */
+  max-width: 1240px;
   margin: 0 auto;
 }
 
@@ -2076,7 +2037,6 @@ body {
   filter: brightness(0.95) drop-shadow(0 2px 8px rgba(0, 91, 154, 0.3));
 }
 
-/* Ligne équilibrée : Région à gauche, Appel calé à l'aplomb de la 4e colonne */
 .footer-bottom-middle-row {
   display: flex;
   justify-content: space-between;
@@ -2219,7 +2179,6 @@ body {
   color: #ffffff;
 }
 
-/* Pleine largeur quand la colonne latérale est masquée */
 .modal-split:has(.modal-side-meta[style*="display: none"]) {
   grid-template-columns: 1fr;
 }
@@ -2279,25 +2238,6 @@ body {
   display: block;
 }
 
-/* .nf-spinner-ring {
-  position: absolute;
-  inset: -14px;
-  border-radius: 50%;
-  border: 3px solid rgba(29, 146, 225, 0.15);
-  border-top-color: var(--aindev-cyan);
-  border-right-color: var(--aindev-blue);
-  animation: nfSpin 0.85s linear infinite;
-  box-shadow: 0 0 15px rgba(29, 146, 225, 0.25);
-}
-
-@keyframes nfSpin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-} */
 .nf-spinner-ring {
   position: absolute;
   inset: -16px;
@@ -2309,7 +2249,6 @@ body {
 
 .nf-spinner-ring circle {
   stroke: var(--aindev-blue);
-  /* Longueur du trait visible (tête) et espacement (queue fondue) */
   stroke-dasharray: 65 210;
   stroke-dashoffset: 0;
   filter: drop-shadow(0 0 10px rgba(0, 91, 154, 0.5));
@@ -2323,10 +2262,6 @@ body {
     transform: rotate(360deg);
   }
 }
-
-/* ========================================================
-   OPTIMISATIONS RESPONSIVES MOBILE & TABLETTE
-   ======================================================== */
 
 /* ========================================================
    OPTIMISATIONS RESPONSIVES MOBILE & TABLETTE
@@ -2352,7 +2287,7 @@ body {
 
 /* --- SMARTPHONES & FORMATS MOBILES (<= 768px) --- */
 @media (max-width: 768px) {
-  /* 1. ÉCRAN SÉLECTION DE PROFIL */
+  /* 1. Écran de sélection profil */
   #profile-gate {
     padding: 30px 16px 20px;
     justify-content: flex-start;
@@ -2406,7 +2341,7 @@ body {
     font-size: 0.84rem;
   }
 
-  /* 2. HEADER MOBILE TRANSPARENT AU SOMMET */
+  /* 2. Header mobile transparent */
   .nf-header {
     height: 56px;
     padding: 0 16px;
@@ -2452,7 +2387,7 @@ body {
     transform: rotate(180deg);
   }
 
-  /* 3. VOLET DÉROULANT MOBILE & GRILLE DE TUILES */
+  /* 3. Volet déroulant mobile */
   .mobile-nav-drawer {
     display: block;
     position: fixed;
@@ -2591,7 +2526,6 @@ body {
     line-height: 1.3;
   }
 
-  /* Tuiles pleine largeur (FAQ et À Propos) alignées et collées à gauche */
   .tile-full-width {
     grid-column: span 2;
     flex-direction: row;
@@ -2613,7 +2547,6 @@ body {
     text-align: left;
   }
 
-  /* Section finale bas de menu avec Avatar + Bouton de projet */
   .mobile-drawer-bottom-actions {
     margin-top: 14px;
     padding-top: 14px;
@@ -2675,7 +2608,7 @@ body {
     transform: scale(0.98);
   }
 
-  /* 4. NAVIGATION HAUT & BILLBOARD */
+  /* 4. Navigation haut & Billboard sur smartphone */
   .nf-right-nav {
     display: flex;
     align-items: center;
@@ -2726,6 +2659,7 @@ body {
     flex-wrap: wrap;
     gap: 8px;
   }
+
   .meta-logo-img {
     height: 18px;
   }
@@ -2740,28 +2674,71 @@ body {
     overflow: hidden;
   }
 
+  /* Grille asymétrique Hero sur smartphone (2 boutons alignés à gauche + 1 tuile appel direct) */
   .billboard-actions {
-    display: flex;
-    flex-direction: row;
-    gap: 8px;
-    width: 100%;
+    display: grid !important;
+    grid-template-columns: 1fr 88px !important;
+    gap: 10px !important;
+    width: 100% !important;
+    margin-top: 22px !important;
+    align-items: stretch !important;
   }
 
-  .billboard-actions .btn-nf {
-    flex: 1;
-    min-width: 0;
-    padding: 10px 8px;
-    font-size: 0.78rem;
-    font-weight: 700;
-    text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    border-radius: 4px;
-    gap: 6px;
+  .hero-left-stack {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    width: 100% !important;
   }
 
-  /* 5. RANGÉES & CARROUSELS */
+  .btn-hero-left {
+    width: 100% !important;
+    height: 48px !important;
+    padding: 0 14px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 10px !important;
+    font-size: 0.86rem !important;
+    font-weight: 700 !important;
+    border-radius: 50px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Tuile carrée d'appel direct sur smartphone */
+  .hero-call-tile {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    background: rgba(29, 146, 225, 0.12) !important;
+    border: 1px solid rgba(29, 146, 225, 0.4) !important;
+    border-radius: 24px !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    font-size: 0.72rem !important;
+    font-weight: 700 !important;
+    text-align: center !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    box-sizing: border-box !important;
+    transition:
+      background 0.2s ease,
+      transform 0.15s ease !important;
+  }
+
+  .hero-call-tile i {
+    color: var(--aindev-cyan) !important;
+    font-size: 1.25rem !important;
+  }
+
+  .hero-call-tile:active {
+    background: rgba(0, 91, 154, 0.5) !important;
+    transform: scale(0.97) !important;
+  }
+
+  /* 5. Rangées & carrousels sur smartphone */
   .rows-container {
     margin-top: 35px;
     padding-bottom: 50px;
@@ -2799,7 +2776,7 @@ body {
     display: none;
   }
 
-  /* 6. DÉBLOCAGE DU SCROLL DES MODALES */
+  /* 6. Modales fluides & vidéo aérée sur smartphone */
   .nf-modal-backdrop {
     display: block !important;
     overflow-y: auto !important;
@@ -2815,14 +2792,20 @@ body {
   }
 
   .modal-hero-cover {
-    max-height: 220px;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 4 / 3 !important;
+    min-height: 260px !important;
+    max-height: 320px !important;
+  }
+
+  .modal-video-wrapper iframe {
+    width: 140% !important;
+    height: 140% !important;
   }
 
   .modal-hero-cover.is-project-cover img#modal-img {
-    width: 70%;
-    max-height: 58%;
-    top: 36%;
+    width: 80%;
+    max-height: 68%;
+    top: 40%;
   }
 
   .modal-hero-actions {
@@ -2873,7 +2856,7 @@ body {
     font-size: 0.9rem;
   }
 
-  /* 7. SECTION CONTACT SUR MOBILE */
+  /* 7. Section contact sur smartphone */
   .contact-section-wrap {
     padding: 60px 14px 70px;
   }
@@ -2916,7 +2899,7 @@ body {
     min-width: 48px;
   }
 
-  /* 8. FOOTER SUR MOBILE */
+  /* 8. Footer sur smartphone */
   .nf-footer {
     padding: 50px 14px 30px;
   }
@@ -2943,6 +2926,35 @@ body {
     align-items: flex-start;
     gap: 10px;
   }
+
+  /* Section Drone adaptée mobile */
+  .drone-row-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 0 4px;
+  }
+
+  .drone-highlight-card,
+  .drone-episodes-cta-box,
+  .drone-info-card {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    aspect-ratio: 16 / 9 !important;
+    height: auto !important;
+  }
+
+  .drone-episodes-cta-box {
+    aspect-ratio: auto !important;
+    min-height: 140px;
+    padding: 18px 20px;
+  }
+
+  .drone-info-card {
+    aspect-ratio: auto !important;
+    padding: 18px 20px;
+  }
 }
 
 /* --- TRÈS PETITS SMARTPHONES (<= 580px) --- */
@@ -2952,7 +2964,9 @@ body {
   }
 }
 
-/* Bouton transparent & verre dépoli dans la modale drone */
+/* ========================================================
+   COMPOSANTS SPÉCIFIQUES & TOAST NETFLIX
+   ======================================================== */
 .modal-episodes-action-wrap {
   margin-top: 22px;
   margin-bottom: 8px;
@@ -3001,91 +3015,7 @@ body {
   transform: scale(0.98);
 }
 
-/* ========================================================
-   NOUVELLE CARTE TECHNIQUE DRONE (3E BLOC)
-   ======================================================== */
-.drone-info-card {
-  flex: 1;
-  min-width: 280px;
-  max-width: 360px;
-  background: rgba(14, 20, 29, 0.75);
-  border: 1px solid rgba(0, 91, 154, 0.35);
-  border-radius: 8px;
-  padding: 22px 24px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  cursor: pointer;
-  backdrop-filter: blur(8px);
-  transition:
-    transform 0.25s ease,
-    border-color 0.25s ease,
-    box-shadow 0.25s ease;
-}
-
-.drone-info-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--aindev-cyan);
-  box-shadow: 0 10px 25px rgba(0, 91, 154, 0.35);
-}
-
-.drone-info-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.74rem;
-  font-weight: 800;
-  color: var(--aindev-cyan);
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-  margin-bottom: 8px;
-}
-
-.drone-info-card h4 {
-  font-size: 1.15rem;
-  font-weight: 800;
-  color: #ffffff;
-  margin-bottom: 12px;
-}
-
-.drone-info-specs {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-bottom: 14px;
-}
-
-.drone-info-specs li {
-  font-size: 0.85rem;
-  color: #cfd8e3;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.drone-info-specs li i {
-  color: var(--aindev-cyan);
-  font-size: 0.78rem;
-}
-
-.drone-info-action {
-  font-size: 0.82rem;
-  color: #a4b3c4;
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  transition: color 0.2s ease;
-}
-
-.drone-info-card:hover .drone-info-action {
-  color: #ffffff;
-}
-
-/* ========================================================
-   TUILE ACCROCHE GOOGLE DANS LES AVIS CLIENTS
-   ======================================================== */
+/* Carte Google Feature */
 .review-google-feature-card {
   background: linear-gradient(
     135deg,
@@ -3172,13 +3102,6 @@ body {
   margin-top: 6px;
 }
 
-@media (max-width: 768px) {
-  .drone-info-card {
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
-}
-
 .yt-hero-action-btn {
   display: inline-flex;
   align-items: center;
@@ -3203,9 +3126,7 @@ body {
   box-shadow: 0 4px 15px rgba(255, 0, 0, 0.25);
 }
 
-/* ========================================================
-   TOAST DE CONFIRMATION FORMULAIRE
-   ======================================================== */
+/* Toast de confirmation de formulaire */
 .form-toast {
   position: fixed;
   bottom: 30px;

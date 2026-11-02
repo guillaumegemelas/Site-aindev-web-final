@@ -32,7 +32,7 @@ function buildVideoIframe(source) {
     const sep = privacyHash ? "&" : "?";
     return `
       <iframe
-        src="https://player.vimeo.com/video/${videoId}${privacyHash}${sep}autoplay=1&muted=1&loop=1&autopause=0&playsinline=1"
+        src="https://player.vimeo.com/video/${videoId}${privacyHash}${sep}autoplay=1&muted=1&loop=1&autopause=0&playsinline=1&background=1"
         frameborder="0"
         allow="autoplay; fullscreen; picture-in-picture"
         allowfullscreen
