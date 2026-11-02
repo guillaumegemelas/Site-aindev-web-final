@@ -272,12 +272,17 @@ function openProjectModalFromDOM(element) {
   modalCat.innerText = cat || "Web";
   modalTech.innerText = tech || "WordPress, SEO";
 
+  // Récupération dynamique depuis element (avec valeurs par défaut)
+  const loc = element.getAttribute("data-loc") || "Ain (01)";
+  const year = element.getAttribute("data-year") || "2026";
+  const type = element.getAttribute("data-type") || "Projet Sur-Mesure";
+
   const tagsContainer = document.getElementById("modal-tags");
   if (tagsContainer) {
     tagsContainer.innerHTML = `
-      <span class="meta-tag-match">Projet Sur-Mesure</span>
-      <span class="meta-tag-badge">Ain (01)</span>
-      <span>2026</span>
+      <span class="meta-tag-match">${type}</span>
+      <span class="meta-tag-badge">${loc}</span>
+      <span>${year}</span>
     `;
   }
 
@@ -286,14 +291,8 @@ function openProjectModalFromDOM(element) {
     modalLinkBtn.target = "_blank";
     modalLinkBtn.rel = "noopener noreferrer";
     modalLinkBtn.style.display = "inline-flex";
-    modalLinkBtn.innerHTML =
-      '<i class="fa-solid fa-arrow-up-right-from-square"></i> Visiter le site';
-    modalLinkBtn.onclick = (e) => {
-      e.stopPropagation();
-    };
   } else {
     modalLinkBtn.style.display = "none";
-    modalLinkBtn.onclick = null;
   }
 
   if (modalCover) modalCover.classList.add("is-project-cover");
