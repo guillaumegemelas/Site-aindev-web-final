@@ -2682,7 +2682,7 @@ body {
   }
 
   .billboard {
-    height: 85vh !important;
+    height: 110vh !important;
     min-height: 520px;
     padding: 75px 16px 30px;
     display: flex;
