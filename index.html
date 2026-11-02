@@ -241,7 +241,7 @@
       <div class="profile-brand-logo">AINDEV</div>
 
       <div class="profile-header-group">
-        <h2 class="profile-title">Bienvenue !</h2>
+        <div class="profile-title">Bienvenue !</div>
         <p class="profile-subtitle">
           Sélectionnez un profil pour explorer mes réalisations ou lancer votre
           projet
@@ -291,7 +291,7 @@
               />
             </svg>
           </div>
-          <span>Visiteur</span>
+          <span>Tout voir</span>
         </div>
 
         <!-- 2. Profil Guillaume -->
@@ -308,7 +308,7 @@
               height="140"
             />
           </div>
-          <span>Guillaume</span>
+          <span>L'artisan</span>
         </div>
 
         <!-- 3. Profil Pôle Web -->
@@ -374,7 +374,7 @@
               </g>
             </svg>
           </div>
-          <span>Pôle Web</span>
+          <span>Sites internet</span>
         </div>
 
         <!-- 4. Profil Pôle Drone -->
@@ -398,8 +398,10 @@
                   x2="100%"
                   y2="100%"
                 >
-                  <stop offset="0%" stop-color="#e63946" />
-                  <stop offset="100%" stop-color="#9d0208" />
+                  <!-- <stop offset="0%" stop-color="#e63946" />
+                  <stop offset="100%" stop-color="#9d0208" /> -->
+                  <stop offset="0%" stop-color="#2ec4b6" />
+                  <stop offset="100%" stop-color="#0f7173" />
                 </linearGradient>
               </defs>
               <rect
@@ -440,11 +442,11 @@
               />
             </svg>
           </div>
-          <span>Pôle Drone</span>
+          <span>Vidéo & Drone</span>
         </div>
 
         <!-- 6. Profil Prestations & Expertises -->
-        <div
+        <!-- <div
           class="profile-box"
           onclick="selectProfile('prestations', event)"
           title="Découvrir mes prestations et expertises"
@@ -502,10 +504,10 @@
             </svg>
           </div>
           <span>Prestations</span>
-        </div>
+        </div> -->
 
         <!-- 6. Profil Contact (Clin d'œil + Enveloppe contour blanc et cœur transparent) -->
-        <div
+        <!-- <div
           class="profile-box"
           onclick="selectProfile('contact', event)"
           title="Lancer mon projet / Contact"
@@ -536,10 +538,8 @@
                 fill="url(#grad-contact-pro)"
               />
 
-              <!-- Œil gauche rond -->
               <circle cx="42" cy="52" r="7" fill="#ffffff" />
 
-              <!-- Œil droit en clin d'œil -->
               <path
                 d="M 82 54 Q 92 44 102 54"
                 stroke="#ffffff"
@@ -548,7 +548,6 @@
                 fill="none"
               />
 
-              <!-- Sourire franc -->
               <path
                 d="M 45 74 Q 68 96 91 74"
                 stroke="#ffffff"
@@ -557,9 +556,7 @@
                 fill="none"
               />
 
-              <!-- Enveloppe en contour blanc pur (intérieur transparent) -->
               <g transform="translate(98, 20)">
-                <!-- Corps de l'enveloppe (bordure blanche, intérieur vide) -->
                 <rect
                   x="0"
                   y="0"
@@ -572,7 +569,7 @@
                   stroke-linejoin="round"
                   fill="none"
                 />
-                <!-- Lignes du rabat de l'enveloppe -->
+
                 <path
                   d="M 2 2 L 13 11 L 24 2"
                   stroke="#ffffff"
@@ -585,7 +582,7 @@
             </svg>
           </div>
           <span>Contact</span>
-        </div>
+        </div> -->
 
         <!-- AVATAR VISITEUR / SANS PROFIL (INVISIBLE DANS LA GRILLE MAIS UTILISÉ PAR LE SCRIPT) -->
         <div
@@ -634,7 +631,7 @@
               />
             </svg>
           </div>
-          <span>Visiteur</span>
+          <span>Tout voir</span>
         </div>
       </div>
 
@@ -3218,23 +3215,39 @@
       <div id="seo-text-about">
         <p>
           <strong>Moi, c'est Guillaume.</strong> Artisan du numérique installé à
-          Saint-Étienne-du-Bois, au cœur de l'Ain, je mets ma double casquette
-          de développeur et de télépilote drone au service de vos projets.
+          Saint-Étienne-du-Bois, au cœur de l'Ain, je mets mes compétences de
+          développeur web et de télépilote de drone au service de vos projets.
         </p>
         <p>
-          Ce qui m'anime au quotidien ? Créer des outils digitaux à la fois
-          beaux, fluides et faciles à vivre pour vous. Que vous ayez besoin d'un
-          site vitrine accueillant (WordPress), d'une boutique en ligne claire
-          ou d'une application métier pointue (React / Next.js), je choisis la
-          solution la plus juste pour votre activité, sans jamais vous survendre
-          du superflu.
+          <strong>Ce qui m'anime au quotidien ?</strong> Concevoir des solutions
+          numériques utiles, bien pensées et adaptées à vos besoins. Qu’il
+          s’agisse d’un site vitrine, d’une boutique en ligne ou d’un outil sur
+          mesure pour simplifier votre quotidien, je recherche avant tout la
+          solution qui correspond réellement à votre activité, sans vous
+          proposer du superflu.
         </p>
         <p>
-          <strong>Ma façon de travailler est simple :</strong> de l'écoute, de
-          la transparence et zéro jargon. Je reste votre interlocuteur dédié à
-          chaque étape, et je prends le temps de vous former pour que vous soyez
-          100 % autonome et serein une fois le site livré.
+          <strong>Ma façon de travailler est simple :</strong> de la
+          transparence et des échanges clairs à chaque étape. Je reste votre
+          interlocuteur unique à chaque étape du projet et prends le temps de
+          vous former à l’utilisation de votre site. Et parce qu’un site ne
+          s’arrête pas à sa mise en ligne, je reste à vos côtés pour en assurer
+          le suivi, la maintenance et la sécurité dans la durée.
         </p>
+        <!-- Badge d'engagement propriétaire & liberté -->
+        <div class="freedom-badge-box">
+          <div class="freedom-badge-icon">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <div class="freedom-badge-content">
+            <strong>Propriété garantie & zéro engagement</strong>
+            <p>
+              Pas de leasing ni d’engagement imposé : vous restez propriétaire
+              de votre site et libre de choisir les services dont vous avez
+              besoin.
+            </p>
+          </div>
+        </div>
       </div>
 
       <!-- Mentions Légales & RGPD (100% en dur dans le DOM) -->
@@ -3932,7 +3945,9 @@
                     côtés. Vous échangez directement avec la personne qui code
                     votre site : pas de commercial intermédiaire, des tarifs
                     clairs, une réactivité immédiate et une vraie proximité
-                    locale.
+                    locale. Pas de leasing ni d’engagement imposé : vous restez
+                    propriétaire de votre site et libre de choisir les services
+                    dont vous avez besoin.
                   </p>
                 </div>
               </article>
