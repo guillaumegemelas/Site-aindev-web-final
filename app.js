@@ -147,8 +147,25 @@ function selectProfile(type, event) {
   }
 
   // 5. Fin du loader et redirection vers la section ciblée
+  // setTimeout(() => {
+  //   if (loaderGate) loaderGate.classList.remove("active");
+
+  //   if (type === "guillaume") {
+  //     openModalDetails("about");
+  //   } else if (type === "web") {
+  //     smoothScrollToTarget("row-web");
+  //   } else if (type === "drone") {
+  //     smoothScrollToTarget("row-drone");
+  //   } else {
+  //     window.scrollTo({ top: 0, behavior: "smooth" });
+  //   }
+  // }, 1300);
+  // 5. Fin du loader et redirection vers la section ciblée
   setTimeout(() => {
     if (loaderGate) loaderGate.classList.remove("active");
+
+    // DÉCLENCHE L'ANIMATION DU HERO ICI :
+    document.getElementById("billboard-top")?.classList.add("is-revealed");
 
     if (type === "guillaume") {
       openModalDetails("about");

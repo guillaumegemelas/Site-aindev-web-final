@@ -368,7 +368,7 @@ body {
    ======================================================== */
 .billboard {
   position: relative;
-  height: 90vh; /* Testé à 85vh */
+  height: 110vh; /* Testé à 85vh */
   min-height: 480px;
   display: flex;
   align-items: center;
@@ -490,6 +490,41 @@ body {
   color: #fff;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
   margin-bottom: 25px;
+}
+
+/* ========================================================
+   ANIMATION D'APPARITION DU HERO (BLOC FRANC & RAPIDE)
+   ======================================================== */
+@keyframes heroFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 1. Bloc masqué et décalé vers le bas au départ */
+.billboard-content {
+  opacity: 0;
+  transform: translateY(32px);
+  will-change: opacity, transform;
+}
+
+/* 2. Arrivée vive et nette (ease-out dynamique) */
+.billboard.is-revealed .billboard-content {
+  animation: heroFadeUp 0.4s cubic-bezier(0, 0, 0.2, 1) forwards;
+}
+
+/* Accessibilité */
+@media (prefers-reduced-motion: reduce) {
+  .billboard-content {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
 }
 
 /* ========================================================
