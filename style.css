@@ -368,7 +368,7 @@ body {
    ======================================================== */
 .billboard {
   position: relative;
-  height: 110vh; /* Testé à 85vh */
+  height: 100vh; /* Testé à 85vh */
   min-height: 480px;
   display: flex;
   align-items: center;
@@ -2682,7 +2682,7 @@ body {
   }
 
   .billboard {
-    height: 110vh !important;
+    height: 100vh !important;
     min-height: 520px;
     padding: 75px 16px 30px;
     display: flex;
@@ -3322,7 +3322,7 @@ body {
 /* Ajustement compact pour écrans peu hauts (ex: MacBook 13/14" avec Dock) */
 @media (min-width: 769px) and (max-height: 780px) {
   .billboard {
-    height: 90vh;
+    height: 100vh;
   }
   .billboard-title {
     font-size: 2.55rem;
