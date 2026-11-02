@@ -1988,15 +1988,19 @@ body {
 }
 
 .footer-col ul li a {
-  color: #7b8794;
-  font-size: 0.88rem;
+  color: #8b98a5;
   text-decoration: none;
-  transition: color 0.2s ease;
+  font-size: 0.88rem;
+  display: inline-block;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .footer-col ul li a:hover {
   color: #ffffff;
-  text-decoration: underline;
+  transform: translateX(4px);
+  text-decoration: none;
 }
 
 .footer-brand-info {

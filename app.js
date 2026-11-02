@@ -72,7 +72,6 @@ function selectProfile(type, event) {
   const profileGate = document.getElementById("profile-gate");
   const loaderGate = document.getElementById("nf-loader-gate");
   const loaderAvatarTarget = document.getElementById("loader-avatar-target");
-  const headerAvatarContainer = document.getElementById("current-user-avatar");
 
   // 1. Récupération de l'avatar cliqué (ou visiteur caché par défaut)
   let profileBox = event ? event.currentTarget : null;
@@ -90,7 +89,7 @@ function selectProfile(type, event) {
     }
   }
 
-  // 2. Application de l'avatar
+  // 2. Application de l'avatar au loader, formulaire et drawer
   if (loaderAvatarTarget) {
     loaderAvatarTarget.innerHTML = defaultAvatarHTML;
   }
@@ -105,7 +104,9 @@ function selectProfile(type, event) {
     drawerAvatarContainer.innerHTML = defaultAvatarHTML;
   }
 
-  if (headerAvatarContainer && profileBox) {
+  // Mise à jour sécurisée de l'avatar dans la barre de navigation
+  const currentHeaderAvatar = document.getElementById("current-user-avatar");
+  if (currentHeaderAvatar && profileBox) {
     const avatarWrap = profileBox.querySelector(".profile-avatar-wrap");
     if (avatarWrap) {
       const svgElement = avatarWrap.querySelector("svg");
@@ -117,17 +118,17 @@ function selectProfile(type, event) {
         clonedSvg.setAttribute("height", "32");
         clonedSvg.style.borderRadius = "4px";
         clonedSvg.id = "current-user-avatar";
-        headerAvatarContainer.replaceWith(clonedSvg);
+        currentHeaderAvatar.replaceWith(clonedSvg);
       } else if (imgElement) {
-        let imgTag = headerAvatarContainer;
-        if (headerAvatarContainer.tagName !== "IMG") {
-          const newImg = document.createElement("img");
-          newImg.id = "current-user-avatar";
-          headerAvatarContainer.replaceWith(newImg);
-          imgTag = newImg;
-        }
-        imgTag.src = imgElement.src;
-        imgTag.alt = imgElement.alt;
+        const newImg = document.createElement("img");
+        newImg.id = "current-user-avatar";
+        newImg.src = imgElement.src;
+        newImg.alt = imgElement.alt || "Avatar utilisateur";
+        newImg.style.width = "32px";
+        newImg.style.height = "32px";
+        newImg.style.borderRadius = "4px";
+        newImg.style.objectFit = "cover";
+        currentHeaderAvatar.replaceWith(newImg);
       }
     }
   }
@@ -136,16 +137,16 @@ function selectProfile(type, event) {
   if (loaderGate) loaderGate.classList.add("active");
   if (profileGate) profileGate.classList.add("hidden");
 
-  // 4. Vidéo d'arrière-plan
+  // 4. Lancement de la vidéo d'arrière-plan du Hero
   const videoFrame = document.getElementById("billboard-video-frame");
   if (videoFrame && !videoFrame.src && videoFrame.dataset.src) {
     videoFrame.src = videoFrame.dataset.src;
     setTimeout(() => {
       videoFrame.classList.add("is-loaded");
-    }, 5000);
+    }, 4000);
   }
 
-  // 5. Fin du loader et navigation
+  // 5. Fin du loader et redirection vers la section ciblée
   setTimeout(() => {
     if (loaderGate) loaderGate.classList.remove("active");
 
@@ -153,16 +154,12 @@ function selectProfile(type, event) {
       openModalDetails("about");
     } else if (type === "web") {
       smoothScrollToTarget("row-web");
-    } else if (type === "prestations") {
-      smoothScrollToTarget("row-prestations");
     } else if (type === "drone") {
       smoothScrollToTarget("row-drone");
-    } else if (type === "contact") {
-      smoothScrollToTarget("contact-section");
     } else {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
-  }, 1500);
+  }, 1300);
 }
 
 function switchProfileGate() {
@@ -272,7 +269,7 @@ function openProjectModalFromDOM(element) {
   modalCat.innerText = cat || "Web";
   modalTech.innerText = tech || "WordPress, SEO";
 
-  // Récupération dynamique depuis element (avec valeurs par défaut)
+  // Récupération dynamique depuis les data-attributes (avec valeurs de secours locales)
   const loc = element.getAttribute("data-loc") || "Ain (01)";
   const year = element.getAttribute("data-year") || "2026";
   const type = element.getAttribute("data-type") || "Projet Sur-Mesure";
@@ -480,7 +477,6 @@ function playDroneEpisodeFromDOM(element) {
   dronePlayerTitle.innerText = title;
   dronePlayerDesc.innerText = desc;
 
-  // Mise à jour automatique du lien YouTube vers la vidéo active :
   const ytBtn = document.getElementById("drone-yt-btn");
   if (ytBtn && videoId) {
     ytBtn.href = `https://www.youtube.com/watch?v=${videoId}`;
@@ -564,7 +560,6 @@ const scrollableSections = [
 function updateActiveSectionOnScroll() {
   if (isScrollingViaClick || document.body.style.overflow === "hidden") return;
 
-  // Verrouille strictement le profile-gate pour éviter tout affichage involontaire
   const profileGate = document.getElementById("profile-gate");
   if (
     profileGate &&
@@ -575,7 +570,6 @@ function updateActiveSectionOnScroll() {
     }
   }
 
-  // Protection contre le rebond élastique iOS en bas de page
   const isNearBottom =
     window.innerHeight + window.scrollY >=
     document.documentElement.scrollHeight - 100;
@@ -690,7 +684,7 @@ function openReviewModal(cardElement) {
   let author = "Avis Client Certifié";
   let fullText =
     "Témoignage authentique et vérifié issu de la fiche Google Établissement d'Aindev.";
-  let projectLink = "https://g.co/kgs/52nCtbk";
+  const projectLink = "https://g.co/kgs/52nCtbk";
 
   if (cardElement && typeof cardElement === "object" && cardElement.nodeType) {
     author =
@@ -747,7 +741,6 @@ function openReviewModal(cardElement) {
   document.body.style.overflow = "hidden";
 }
 
-// Fonction appelée par le bouton du Billboard
 function scrollToContact(e) {
   smoothScrollToTarget("contact-section", e);
 }
@@ -761,13 +754,11 @@ function smoothScrollToTarget(targetId, e) {
     e.stopPropagation();
   }
 
-  // 1. Verrouille fermement le profile-gate pour empêcher Safari iOS de le rouvrir
   const profileGate = document.getElementById("profile-gate");
   if (profileGate) {
     profileGate.classList.add("hidden");
   }
 
-  // 2. Désactive temporairement le scrollspy
   isScrollingViaClick = true;
   if (unlockScrollTimeout) clearTimeout(unlockScrollTimeout);
 
@@ -796,20 +787,15 @@ function smoothScrollToTarget(targetId, e) {
     }
   }
 
-  // 3. Réactive le suivi de défilement une fois l'animation stabilisée
   unlockScrollTimeout = setTimeout(() => {
     isScrollingViaClick = false;
   }, 1000);
 }
 
-// Intercepte TOUS les liens internes avec '#' (Desktop, Footer, Mobile, etc.)
-// SAUF les boutons d'action de modale !
+// Intercepte les liens internes avec '#'
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    // 1. Si c'est le bouton d'action de la modale, on ne le touche SURTOUT PAS
     if (anchor.id === "modal-link-btn") return;
-
-    // 2. Si c'est un bouton avec déjà un onclick personnalisé, on ne le touche pas
     if (anchor.getAttribute("onclick")) return;
 
     anchor.addEventListener("click", function (e) {
@@ -823,7 +809,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ========================================================
-// GESTIONNAIRE D'ENVOI NETLIFY & TOAST DE CONFIRMATION
+// 9. GESTIONNAIRE D'ENVOI NETLIFY & TOAST DE CONFIRMATION
 // ========================================================
 function showFormToast(isSuccess, title, message) {
   const toast = document.getElementById("form-toast");
