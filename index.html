@@ -243,8 +243,8 @@
       <div class="profile-header-group">
         <div class="profile-title">Bienvenue !</div>
         <p class="profile-subtitle">
-          Sélectionnez un profil pour explorer mes réalisations ou lancer votre
-          projet
+          Choisissez votre univers et découvrez ce que je peux faire pour votre
+          activité.
         </p>
       </div>
 
@@ -682,7 +682,7 @@
         </button>
 
         <!-- MENU DESKTOP CLASSIQUE (Restreint aux écrans larges) -->
-        <ul class="nf-menu-links desktop-nav" id="menu-links">
+        <!-- <ul class="nf-menu-links desktop-nav" id="menu-links">
           <span class="nav-pill-indicator" id="nav-pill"></span>
           <li>
             <a href="#" class="nav-link active" data-target="top">Accueil</a>
@@ -743,7 +743,73 @@
               <span>Contact</span>
             </a>
           </li>
-        </ul>
+        </ul> -->
+        <!-- Dans le header, remplace : -->
+
+        <!-- Par : -->
+        <nav class="nf-menu-nav-wrap desktop-nav" id="menu-links">
+          <span class="nav-pill-indicator" id="nav-pill"></span>
+          <ul class="nf-menu-links">
+            <li>
+              <a href="#" class="nav-link active" data-target="top">Accueil</a>
+            </li>
+            <li>
+              <a href="#row-web" class="nav-link" data-target="row-web"
+                >Créations Web</a
+              >
+            </li>
+            <li>
+              <a
+                href="#row-prestations"
+                class="nav-link"
+                data-target="row-prestations"
+                >Prestations</a
+              >
+            </li>
+            <li>
+              <a href="#row-drone" class="nav-link" data-target="row-drone"
+                >Vidéos Drone</a
+              >
+            </li>
+            <li>
+              <a href="#row-reviews" class="nav-link" data-target="row-reviews"
+                >Avis Clients</a
+              >
+            </li>
+            <li>
+              <a
+                href="#about"
+                class="nav-link"
+                data-target="about"
+                onclick="
+                  event.preventDefault();
+                  openModalDetails('about');
+                "
+                >À Propos</a
+              >
+            </li>
+            <li>
+              <a
+                href="#faq"
+                class="nav-link"
+                data-target="faq"
+                onclick="
+                  event.preventDefault();
+                  openModalDetails('faq');
+                "
+                >FAQ</a
+              >
+            </li>
+            <li>
+              <a
+                href="#contact-section"
+                class="nav-link nav-contact-btn"
+                data-target="contact-section"
+                ><span>Contact</span></a
+              >
+            </li>
+          </ul>
+        </nav>
       </div>
 
       <div class="nf-right-nav">
@@ -1047,7 +1113,7 @@
                 <div class="card-dim-film"></div>
               </div>
               <div class="card-overlay">
-                <h4>Tourn'bois Créations</h4>
+                <h3>Tourn'bois Créations</h3>
                 <span>E-Commerce &amp; Métier d'Art</span>
               </div>
               <div class="project-desc-source" style="display: none">
@@ -1105,7 +1171,7 @@
                 <div class="card-dim-film"></div>
               </div>
               <div class="card-overlay">
-                <h4>MCL Gestion</h4>
+                <h3>MCL Gestion</h3>
                 <span>Conseil &amp; Gestion</span>
               </div>
               <div class="project-desc-source" style="display: none">
@@ -1156,7 +1222,7 @@
                 <div class="card-dim-film"></div>
               </div>
               <div class="card-overlay">
-                <h4>Soupe Horticulture</h4>
+                <h3>Soupe Horticulture</h3>
                 <span>Horticulture</span>
               </div>
               <div class="project-desc-source" style="display: none">
@@ -1217,7 +1283,7 @@
                 <div class="card-dim-film"></div>
               </div>
               <div class="card-overlay">
-                <h4>Access Machines</h4>
+                <h3>Access Machines</h3>
                 <span>Industrie &amp; TP</span>
               </div>
               <div class="project-desc-source" style="display: none">
@@ -1271,7 +1337,7 @@
                 <div class="card-dim-film"></div>
               </div>
               <div class="card-overlay">
-                <h4>EGT Environnement</h4>
+                <h3>EGT Environnement</h3>
                 <span>Gestion des déchets</span>
               </div>
               <div class="project-desc-source" style="display: none">
@@ -1331,7 +1397,7 @@
                 <div class="card-dim-film"></div>
               </div>
               <div class="card-overlay">
-                <h4>Mille et un pas</h4>
+                <h3>Mille et un pas</h3>
                 <span>Magasin de chaussures</span>
               </div>
               <div class="project-desc-source" style="display: none">
@@ -1387,7 +1453,7 @@
                 <div class="card-dim-film"></div>
               </div>
               <div class="card-overlay">
-                <h4>AccessPro'TP</h4>
+                <h3>AccessPro'TP</h3>
                 <span>Travaux publics</span>
               </div>
               <div class="project-desc-source" style="display: none">
@@ -1440,7 +1506,7 @@
                 <div class="card-dim-film"></div>
               </div>
               <div class="card-overlay">
-                <h4>Formprotech</h4>
+                <h3>Formprotech</h3>
                 <span>Formation Professionnelle</span>
               </div>
               <div class="project-desc-source" style="display: none">
@@ -1493,7 +1559,7 @@
                 <div class="card-dim-film"></div>
               </div>
               <div class="card-overlay">
-                <h4>Clinic Armes</h4>
+                <h3>Clinic Armes</h3>
                 <span>Armurerie</span>
               </div>
               <div class="project-desc-source" style="display: none">
@@ -1547,7 +1613,7 @@
                 <div class="card-dim-film"></div>
               </div>
               <div class="card-overlay">
-                <h4>Les Meubles Mailland</h4>
+                <h3>Les Meubles Mailland</h3>
                 <span>Mobilier haut de gamme</span>
               </div>
               <div class="project-desc-source" style="display: none">
@@ -1603,7 +1669,7 @@
                 <div class="card-dim-film"></div>
               </div>
               <div class="card-overlay">
-                <h4>Nathalie Robez Masson</h4>
+                <h3>Nathalie Robez Masson</h3>
                 <span>Boutique Artisanale</span>
               </div>
               <div class="project-desc-source" style="display: none">
@@ -1657,7 +1723,7 @@
                 <div class="card-dim-film"></div>
               </div>
               <div class="card-overlay">
-                <h4>Aindev Drone</h4>
+                <h3>Aindev Drone</h3>
                 <span>Captation Aérienne</span>
               </div>
               <div class="project-desc-source" style="display: none">
@@ -1711,7 +1777,7 @@
                 <div class="card-dim-film"></div>
               </div>
               <div class="card-overlay">
-                <h4>ESS'Ain</h4>
+                <h3>ESS'Ain</h3>
                 <span>Coopérative d'entrepreneurs</span>
               </div>
               <div class="project-desc-source" style="display: none">
@@ -1765,7 +1831,7 @@
                 <div class="card-dim-film"></div>
               </div>
               <div class="card-overlay">
-                <h4>Sou des Écoles</h4>
+                <h3>Sou des Écoles</h3>
                 <span>Vie Associative</span>
               </div>
               <div class="project-desc-source" style="display: none">
@@ -1821,7 +1887,7 @@
                 <div class="card-dim-film"></div>
               </div>
               <div class="card-overlay">
-                <h4>Compétences &amp; Vous</h4>
+                <h3>Compétences &amp; Vous</h3>
                 <span>Formation &amp; Bilan</span>
               </div>
               <div class="project-desc-source" style="display: none">
@@ -1873,7 +1939,7 @@
                 <div class="card-dim-film"></div>
               </div>
               <div class="card-overlay">
-                <h4>Kodama</h4>
+                <h3>Kodama</h3>
                 <span>Paysagisme</span>
               </div>
               <div class="project-desc-source" style="display: none">
@@ -1930,7 +1996,7 @@
                 <div class="card-dim-film"></div>
               </div>
               <div class="card-overlay">
-                <h4>EPGV 01</h4>
+                <h3>EPGV 01</h3>
                 <span>Sport &amp; Santé</span>
               </div>
               <div class="project-desc-source" style="display: none">
@@ -1986,7 +2052,7 @@
                 <div class="card-dim-film"></div>
               </div>
               <div class="card-overlay">
-                <h4>GLC Communication</h4>
+                <h3>GLC Communication</h3>
                 <span>Communication &amp; Médias</span>
               </div>
               <div class="project-desc-source" style="display: none">
@@ -2047,7 +2113,7 @@
                 <div class="card-dim-film"></div>
               </div>
               <div class="card-overlay">
-                <h4>Essilor</h4>
+                <h3>Essilor</h3>
                 <span>Grand Compte</span>
               </div>
               <div class="project-desc-source" style="display: none">
@@ -2106,7 +2172,7 @@
                 <div class="card-dim-film"></div>
               </div>
               <div class="card-overlay">
-                <h4>Chirolyon</h4>
+                <h3>Chirolyon</h3>
                 <span>Santé Chiropratique</span>
               </div>
               <div class="project-desc-source" style="display: none">
@@ -2186,7 +2252,7 @@
                   "
                   >Sur-Mesure &amp; CMS</span
                 >
-                <h4>Création &amp; Développement</h4>
+                <h3>Création &amp; Développement</h3>
                 <span>Conception de sites vitrines, boutiques et web apps</span>
               </div>
             </article>
@@ -2215,7 +2281,7 @@
                   "
                   >Code &amp; No-Code</span
                 >
-                <h4>Maintenance &amp; Sécurité</h4>
+                <h3>Maintenance &amp; Sécurité</h3>
                 <span
                   >Audit, protection et modernisation de sites existants</span
                 >
@@ -2246,7 +2312,7 @@
                   "
                   >Visibilité Locale &amp; IA</span
                 >
-                <h4>SEO &amp; Visibilité Google</h4>
+                <h3>SEO &amp; Visibilité Google</h3>
                 <span
                   >Positionnement de votre activité en tête des requêtes</span
                 >
@@ -2277,7 +2343,7 @@
                   "
                   >Enseignement Supérieur</span
                 >
-                <h4>Formation Digitale</h4>
+                <h3>Formation Digitale</h3>
                 <span>Transmission des méthodes concrètes du web</span>
               </div>
             </article>
@@ -2315,7 +2381,7 @@
                 "
                 >Valeur Ajoutée</span
               >
-              <h4>Prestations Drone 4K</h4>
+              <h3>Prestations Drone 4K</h3>
               <span>Sublimez vos sites par des vidéos aériennes</span>
             </div>
           </div>
@@ -2330,7 +2396,7 @@
             </div>
             <div class="cta-episodes-text">
               <span class="cta-tag">Galerie Vidéo · Mes Réalisations</span>
-              <h4>Voir tous les épisodes</h4>
+              <h3>Voir tous les épisodes</h3>
               <p>
                 Découvrez mes tournages en vol (Pralognan, Grau-du-Roi, TGV,
                 Barrage de Vouglans...)
@@ -2350,7 +2416,7 @@
               <i class="fa-solid fa-shield-halved"></i> Cadre Légal &amp;
               Matériel
             </div>
-            <h4>Prises de vues 4K certifiées</h4>
+            <h3>Prises de vues 4K certifiées</h3>
             <ul class="drone-info-specs">
               <li>
                 <i class="fa-solid fa-check"></i> <strong>Drone DJI</strong>avec
@@ -4490,7 +4556,7 @@
         <div class="footer-grid">
           <!-- Colonne 1 -->
           <div class="footer-col">
-            <h4>Plateforme</h4>
+            <h3>Plateforme</h3>
             <ul>
               <li>
                 <a
@@ -4513,7 +4579,7 @@
 
           <!-- Colonne 2 -->
           <div class="footer-col">
-            <h4>Expertises</h4>
+            <h3>Expertises</h3>
             <ul>
               <li>
                 <a
@@ -4570,7 +4636,7 @@
 
           <!-- Colonne 3 -->
           <div class="footer-col">
-            <h4>Ressources</h4>
+            <h3>Ressources</h3>
             <ul>
               <li>
                 <a

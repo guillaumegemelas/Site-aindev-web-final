@@ -257,7 +257,7 @@ function resetModalState() {
 function openProjectModalFromDOM(element) {
   resetModalState();
 
-  const title = element.querySelector("h4").innerText;
+  const title = element.querySelector("h3").innerText;
   const cover = element.getAttribute("data-cover");
   const video = element.getAttribute("data-video");
   const client = element.getAttribute("data-client");

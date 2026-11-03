@@ -199,31 +199,50 @@ body {
   display: none;
 }
 
-/* Header global plus aéré */
+/* ========================================================
+   HEADER AVEC DÉGRADÉ PROGRESSIF ULTRA-FLUIDE
+   ======================================================== */
 .nf-header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 76px; /* Passe de 68px à 76px pour plus de hauteur et d'air */
+  height: 76px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 4%;
   z-index: 1000;
+  /* 1. Dégradé léger par défaut au repos */
   background: linear-gradient(
     180deg,
-    rgba(5, 11, 20, 0.95) 0%,
-    rgba(5, 11, 20, 0.6) 70%,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.25) 60%,
     transparent 100%
   );
-  transition:
-    background-color 0.4s ease,
-    height 0.3s ease;
+  transition: height 0.3s ease;
 }
 
-.nf-header.scrolled {
-  background-color: var(--nf-black);
+/* 2. Couche sombre superposée pour le scroll */
+.nf-header::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    180deg,
+    rgba(5, 7, 10, 0.98) 0%,
+    rgba(5, 7, 10, 0.85) 65%,
+    rgba(5, 7, 10, 0) 100%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 3. Au scroll : le dégradé sombre apparaît en douceur */
+.nf-header.scrolled::after {
+  opacity: 1;
 }
 
 /* Espacement entre le logo AINDEV et le menu */
@@ -244,13 +263,17 @@ body {
 
 /* Conteneur de la barre de navigation avec plus d'assise */
 .nf-menu-links {
-  position: relative;
   display: flex;
   list-style: none;
-  gap: 8px; /* Écarte légèrement les onglets les uns des autres */
+  gap: 8px;
   align-items: center;
-  background: rgba(10, 16, 24, 0.72);
+  margin: 0;
+  background: transparent;
   padding: 6px 10px; /* Plus d'air intérieur */
+}
+.nf-menu-nav-wrap {
+  position: relative;
+  background: rgba(10, 16, 24, 0.72);
   border-radius: 50px;
   border: 1px solid rgba(0, 91, 154, 0.35);
   backdrop-filter: blur(12px);
@@ -799,6 +822,7 @@ body {
   z-index: 2;
 }
 
+.card-overlay h3,
 .card-overlay h4 {
   font-size: 1.05rem;
   font-weight: 700;
@@ -968,6 +992,7 @@ body {
   letter-spacing: 0.8px;
 }
 
+.drone-info-card h3,
 .drone-info-card h4 {
   font-size: 1.05rem;
   font-weight: 800;
