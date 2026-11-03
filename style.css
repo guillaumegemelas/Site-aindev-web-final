@@ -12,7 +12,7 @@
     sans-serif;
 }
 
-html {
+/* html {
   scrollbar-gutter: stable;
   background-color: var(--nf-black);
 }
@@ -22,6 +22,20 @@ html {
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
+} */
+html {
+  scrollbar-gutter: stable;
+  background-color: var(--nf-black);
+  -webkit-text-size-adjust: 100%; /* Empêche le gonflement automatique du texte sur Android */
+  text-size-adjust: 100%;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; /* Pour Firefox Android */
 }
 
 /* Supprime le flash bleu de sélection tactile sur iOS et Android */
