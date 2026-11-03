@@ -2724,8 +2724,8 @@ body {
   }
 
   .billboard {
-    height: 105vh !important;
-    min-height: 520px;
+    height: 100vh !important;
+    min-height: 500px;
     padding: 75px 16px 30px;
     display: flex;
     align-items: center;
@@ -2746,10 +2746,21 @@ body {
     margin-bottom: 8px;
   }
 
-  .billboard-title {
+  /* .billboard-title {
     font-size: 1.95rem;
     line-height: 1.2;
     margin-bottom: 10px;
+  } */
+  .billboard-title {
+    font-size: clamp(
+      1.45rem,
+      5vw,
+      1.65rem
+    ); /* S'adapte à la largeur exacte sans déborder */
+    font-weight: 800; /* 800 au lieu de 900 adoucit le rendu sur Android */
+    line-height: 1.18;
+    margin-bottom: 8px;
+    letter-spacing: -0.3px;
   }
 
   .billboard-meta {
@@ -2762,12 +2773,21 @@ body {
     height: 18px;
   }
 
-  /* Par : */
-  .billboard-desc {
+  /* .billboard-desc {
     font-size: 0.86rem;
     line-height: 1.45;
     margin-bottom: 20px;
-    display: block; /* Laisse le texte respirer sans le couper */
+    display: block; 
+    overflow: visible;
+  } */
+  /* Rendre le texte descriptif plus léger et aéré */
+  .billboard-desc {
+    font-size: 0.82rem; /* Légèrement réduit (au lieu de 0.86rem) */
+    font-weight: 400;
+    line-height: 1.4;
+    color: #e2e8f0;
+    margin-bottom: 16px;
+    display: block;
     overflow: visible;
   }
 
