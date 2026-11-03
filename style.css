@@ -2753,7 +2753,7 @@ body {
   } */
   .billboard-title {
     font-size: clamp(
-      1.65rem,
+      1.55rem,
       5vw,
       1.65rem
     ); /* S'adapte à la largeur exacte sans déborder */
