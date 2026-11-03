@@ -67,7 +67,7 @@ function scrollCarousel(id, direction) {
 
 function selectProfile(type, event) {
   // Mémorise que le profil a été sélectionné pour cette visite
-  sessionStorage.setItem("aindev_profile_entered", "true");
+  // sessionStorage.setItem("aindev_profile_entered", "true");
 
   const profileGate = document.getElementById("profile-gate");
   const loaderGate = document.getElementById("nf-loader-gate");
@@ -577,15 +577,15 @@ const scrollableSections = [
 function updateActiveSectionOnScroll() {
   if (isScrollingViaClick || document.body.style.overflow === "hidden") return;
 
-  const profileGate = document.getElementById("profile-gate");
-  if (
-    profileGate &&
-    sessionStorage.getItem("aindev_profile_entered") === "true"
-  ) {
-    if (!profileGate.classList.contains("hidden")) {
-      profileGate.classList.add("hidden");
-    }
-  }
+  // const profileGate = document.getElementById("profile-gate");
+  // if (
+  //   profileGate &&
+  //   sessionStorage.getItem("aindev_profile_entered") === "true"
+  // ) {
+  //   if (!profileGate.classList.contains("hidden")) {
+  //     profileGate.classList.add("hidden");
+  //   }
+  // }
 
   const isNearBottom =
     window.innerHeight + window.scrollY >=
@@ -905,4 +905,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
   });
+});
+
+window.addEventListener("DOMContentLoaded", () => {
+  // Si le portail de profil est absent ou masqué, on force l'apparition du hero
+  const profileGate = document.getElementById("profile-gate");
+  if (!profileGate || profileGate.classList.contains("hidden")) {
+    document.getElementById("billboard-top")?.classList.add("is-revealed");
+  }
 });

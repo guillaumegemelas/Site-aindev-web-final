@@ -12,17 +12,6 @@
     sans-serif;
 }
 
-/* html {
-  scrollbar-gutter: stable;
-  background-color: var(--nf-black);
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  -webkit-font-smoothing: antialiased;
-} */
 html {
   scrollbar-gutter: stable;
   background-color: var(--nf-black);
@@ -49,6 +38,7 @@ body {
   font-family: var(--font-main);
   overflow-x: hidden;
   user-select: none;
+  overscroll-behavior-y: contain; /* Empêche le pull-to-refresh intempestif sur Chrome Android */
 }
 
 /* ========================================================
@@ -2726,7 +2716,8 @@ body {
   .billboard {
     height: 100vh !important;
     min-height: 500px;
-    padding: 75px 16px 30px;
+    /* padding: 75px 16px 30px; */
+    padding: 68px 16px 20px;
     display: flex;
     align-items: center;
     justify-content: center;
