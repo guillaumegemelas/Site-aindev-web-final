@@ -3398,3 +3398,8 @@ body {
     font-size: 0.88rem;
   }
 }
+
+#billboard-video-frame {
+  pointer-events: none; /* Désactive complètement le hover et le clic sur l'iframe */
+  user-select: none;
+}
