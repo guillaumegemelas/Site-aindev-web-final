@@ -233,11 +233,13 @@ function resetModalState() {
     modalCover.classList.remove("has-video-playing");
   }
 
+  const brandBadge = document.getElementById("modal-brand-badge");
+  const brandLogo = document.getElementById("modal-brand-logo");
+  if (brandBadge) brandBadge.style.display = "none";
+  if (brandLogo) brandLogo.src = "";
+
   const sideMeta = document.querySelector(".modal-side-meta");
   if (sideMeta) sideMeta.style.display = "block";
-
-  const brandBadge = document.getElementById("modal-brand-badge");
-  if (brandBadge) brandBadge.style.display = "none";
 
   const socialsRow = document.getElementById("modal-socials-row");
   if (socialsRow) socialsRow.style.display = "none";
