@@ -143,7 +143,7 @@ function selectProfile(type, event) {
     videoFrame.src = videoFrame.dataset.src;
     setTimeout(() => {
       videoFrame.classList.add("is-loaded");
-    }, 4000);
+    }, 4500);
   }
 
   // 5. Fin du loader et redirection vers la section ciblée
