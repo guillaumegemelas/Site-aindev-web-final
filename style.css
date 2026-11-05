@@ -1514,9 +1514,10 @@ body {
 }
 
 .episode-thumb {
-  width: 90px;
-  height: 90px;
-  border-radius: 8px;
+  width: 140px; /* ou 130px selon l'espace disponible */
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border-radius: 6px;
   overflow: hidden;
   position: relative;
   flex-shrink: 0;
