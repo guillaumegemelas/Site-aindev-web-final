@@ -224,7 +224,10 @@ function stopModalVideo() {
 
 function resetModalState() {
   stopModalVideo();
-  if (modalImg) modalImg.onerror = null;
+  if (modalImg) {
+    modalImg.onerror = null;
+    modalImg.src = "";
+  }
   if (modalCover) {
     modalCover.classList.remove("is-project-cover");
     modalCover.classList.remove("has-video-playing");
