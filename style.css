@@ -15,7 +15,7 @@
 html {
   scrollbar-gutter: stable;
   background-color: var(--nf-black);
-  -webkit-text-size-adjust: 100%; /* Empêche le gonflement automatique du texte sur Android */
+  -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
 
