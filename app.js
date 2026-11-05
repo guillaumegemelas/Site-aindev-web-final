@@ -138,28 +138,31 @@ function selectProfile(type, event) {
   if (profileGate) profileGate.classList.add("hidden");
 
   // 4. Lancement de la vidéo d'arrière-plan du Hero
+  // const videoFrame = document.getElementById("billboard-video-frame");
+  // if (videoFrame && !videoFrame.src && videoFrame.dataset.src) {
+  //   videoFrame.src = videoFrame.dataset.src;
+  //   setTimeout(() => {
+  //     videoFrame.classList.add("is-loaded");
+  //   }, 4500);
+  // }
+  // Variable globale pour le player
+  let billboardPlayer = null;
+
+  // 4. Lancement de la vidéo du Hero
+  // 4. Lancement de la vidéo d'arrière-plan du Hero
   const videoFrame = document.getElementById("billboard-video-frame");
   if (videoFrame && !videoFrame.src && videoFrame.dataset.src) {
+    // 1. On injecte la source YouTube
     videoFrame.src = videoFrame.dataset.src;
-    setTimeout(() => {
-      videoFrame.classList.add("is-loaded");
-    }, 4500);
+
+    // 2. Dès que l'iframe a fini de charger, on déclenche le fondu d'apparition
+    videoFrame.onload = () => {
+      setTimeout(() => {
+        videoFrame.classList.add("is-loaded");
+      }, 5000); // 500 ms de marge pour laisser la première image s'afficher
+    };
   }
 
-  // 5. Fin du loader et redirection vers la section ciblée
-  // setTimeout(() => {
-  //   if (loaderGate) loaderGate.classList.remove("active");
-
-  //   if (type === "guillaume") {
-  //     openModalDetails("about");
-  //   } else if (type === "web") {
-  //     smoothScrollToTarget("row-web");
-  //   } else if (type === "drone") {
-  //     smoothScrollToTarget("row-drone");
-  //   } else {
-  //     window.scrollTo({ top: 0, behavior: "smooth" });
-  //   }
-  // }, 1300);
   // 5. Fin du loader et redirection vers la section ciblée
   setTimeout(() => {
     if (loaderGate) loaderGate.classList.remove("active");
